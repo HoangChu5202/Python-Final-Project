@@ -16,4 +16,4 @@ This week I learn about how a computer work, part requied to make a device call 
 
 I also learn about binary number how to change from demical to binary.
 
-I also know about some popular language.
+I also know about some popular language. 
