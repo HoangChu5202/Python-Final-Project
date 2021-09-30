@@ -4,8 +4,8 @@ male = int(input("Number of Male in class: "))
 female = int(input("Number of Female in class: "))
 
 total = male + female
-malePercent = male / total * 100
-femalePercent = female / total * 100
+malePercent = male / total 
+femalePercent = female / total 
 
-print("Male: " + format(malePercent, ".0f") + "%")
-print("Female: " + format(femalePercent, ".0f") + "%")
+print("Male: " + format(malePercent, ".0%"))
+print("Female: " + format(femalePercent, ".0%"))
