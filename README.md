@@ -50,3 +50,60 @@ Mathematical Operators:
 Short cut to Increase/Decrease Numerical Variables:
 variable += N
 "+" can be replace by "-" to Minus or "*" to Mutiple.
+
+## Chapter 3 - Decision Structures
+In this chapter we learned about if statement.
+
+```Python
+if True:
+    # do this
+    # then this
+    # then this
+# The program continues
+```
+There are 6 Boolean expressions:
+- ==    equal to  
+- !=     not equal to
+- \>=    greater than or equal to
+- <=    less than or equal to
+- \>      greater than
+- <      less than
+
+The next thing we learned is if-else statement and if-elif-else statement.
+
+if-else example: 
+```Python
+if True:
+    # do this
+    # then this
+    # then this
+else:
+    # do this
+    # then this
+    # then this
+# The program continues
+```
+if-elif-else example:
+```Python
+if True:
+    # do this
+    # then this
+    # then this
+elif True:
+    # do this
+    # then this
+    # then this
+else:
+    # do this
+    # then this
+    # then this
+```
+
+**Logical operators**: The words "and" and "or" can be added to evaluate two or more boolean expressions.
+- "and" Both sub-expressions must be true for the compound expression to be true.
+- "or"  One or both sub-expressions must be true for the compound expression to be true.
+- "not" can be added to a boolean expression to find the opposite.
+
+**Short-circuit Evaluation**: an expression is stopped being evaluated as soon as its outcome is determined. We use short circuit evaluation to prevent errors.
+- When using the "or" logical operator, if the first condition is true, the second condition is not tested.
+- When using the "and" logical operator, if the first condition is false, the second condition is not tested.
