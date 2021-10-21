@@ -21,13 +21,17 @@ print("*** Exercise 8. Tip, Tax, and Total***")
       Expected values: between 0.0 and 1250000.0 
 '''
 # Type your code here
+def main():
+  food_charge = float(input("Enter cost food: "))
+  calTotal(food_charge)
 
-food_charge = float(input("Enter cost food: "))
-tip = food_charge * 0.18
-sales_tax = food_charge * 0.07
-total_charge = sales_tax + tip + food_charge
-print("Food Charge:\t", format(food_charge, "10,.2f"))
-print("Tip:\t\t", format(tip, "10,.2f"))
-print("Tax:\t\t", format(sales_tax, "10,.2f"))
-print("Total:\t\t", format(total_charge, "10,.2f"))
+def calTotal(food_charge):
+  tip = food_charge * 0.18
+  sales_tax = food_charge * 0.07
+  total_charge = sales_tax + tip + food_charge
+  print("Food Charge:\t", format(food_charge, "10,.2f"))
+  print("Tip:\t\t", format(tip, "10,.2f"))
+  print("Tax:\t\t", format(sales_tax, "10,.2f"))
+  print("Total:\t\t", format(total_charge, "10,.2f"))
 
+main()
