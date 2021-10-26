@@ -107,3 +107,35 @@ else:
 **Short-circuit Evaluation**: an expression is stopped being evaluated as soon as its outcome is determined. We use short circuit evaluation to prevent errors.
 - When using the "or" logical operator, if the first condition is true, the second condition is not tested.
 - When using the "and" logical operator, if the first condition is false, the second condition is not tested.
+
+## Chapter 4 - Repetition Structures
+In this chapter we learned about while loop and for loop.
+
+**While loop**
+- While loop required a count control. If you forget that it will result at an infinite loop.
+- While loops are best used when you don't know ahead of time how many times the loop should run.
+
+**For loop**
+- For loop is a count control loop. 
+- For loops are best used when you know ahead of time how many times the loop should run.
+
+**Range function**
+
+The range function will create a list for you. For example if you write `range(3)` it mean it will create a list for you look like this: `[0, 1, 2]`
+
+**Sentinal**
+- A sentinel is a value that signals when there are no more items from a list of items to be processed.
+- We can also stop the loop by using `break`
+
+**Input Validation Loops**
+- Garbage in, Garbage out
+    - ​Python can't tell the difference between good data and bad data being input. You need to write validation loops so that when you take garbage in, you throw the garbage out.
+- Numerical Input Validation
+    - The integrity of a program's output is only as good as the integrity of the program's input. To trap errors, we use validation loops to keep asking the input question until the user responds correctly.
+    - If you request numerical input from the user and they give you a string, the result will be a ValueError exception. In this case we should use `try-except` stament.
+- String Input Validation
+    - If you request string input from the user any input will be accepted. You can convert the input to lowercase and remove leading/trailing spaces to clean up the input. `.lower()` to convert string to lowercase. `.upper()` to convert string to uppercase. And `.strip()` to remove all extra space.
+- Nested Loops
+    - You can use a loop inside a loop.
+
+
