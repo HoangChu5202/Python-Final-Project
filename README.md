@@ -138,4 +138,115 @@ The range function will create a list for you. For example if you write `range(3
 - Nested Loops
     - You can use a loop inside a loop.
 
+## Chapter 5 - Functions
+
+**Function**
+A <u>*function*</u> is a group of statements that exists within a program for the purpose of performing a specific task. In Java, we call them <u>*methods*</u>. Benefits of using functions include:
+
+- Code is simpler to understand
+- Less duplicate code (no necessarily less code).
+- Code can be reused in multiple programs.
+- Fewer errors
+- Code is easier to test and debug.
+- Facilitates teamwork and collaboration
+
+**Defining a function**
+You can make your own function. The code for a function is known as a <u>*function definition*</u>.
+
+ The first line of a function definition is known as the <u>header</u> or <u>signature</u>.  The function header begins with the keyword <u>def</u> and is followed by the name of the function.
+
+ <u>Example</u>:
+
+ ```python
+    def function_name():
+        statement
+        statement
+ ```
+
+ **Calling a function**
+ To run a function, we call it by using its name with a set of parenthesis. When a function is called by its name it is then executed.
+
+```python
+def message():
+    print('I am Arthur,')
+    print('King of the Britons.')
+
+message()
+```
+
+The function don't return anything call a <u>void</u> function.
+
+**Local Variables**
+A local variable is a variable created inside a function. It can only be accessed from inside the function. The variable does not persist elsewhere.
+
+**Scope**
+The scope of a local variable is the function in which that variable is created. The scope is the part of the program in which a variable may be accessed. A variable is available only to statements in the variable's scope.
+
+**Parameters**
+A parameter is a variable that represents required input into a function. Parameters are placed inside the parenthesis of the function header/signature.
+
+Multiple parameters must be separated by commas.
+
+**Arguments**
+When we call a function, we pass values, called arguments, by position to the corresponding parameter variables in a function. An argument is any piece of data that is passed into a function when the function is called.
+
+Multiple arguments must be separated by commas.
+
+**Ternary Operator**
+The ternary expression syntax is: *a if condition else b*. One of either a or b is evaluated and returned based on the Boolean value of condition.
+
+- If the condition evaluates to True, a is returned (and concatenated to the variable) and b is ignored
+- If the condition evaluates to False, b is returned (and concatenated to the variable) and a is ignored
+
+```python
+result = "a" if i == 0 else "b"
+```
+
+**Global Variables**
+A <u>global variable</u> is declared outside of functions and is accessible to all the functions in a program. A <u>global</u> constant is a name that references a value that should not be changed while the program runs.
+
+It is recommended that programmers avoid using global variables in a program whenever possible.
+
+**Random Number Functions**
+The <u>import</u> statement causes the interpreter to load the contents of a module into memory. 
+
+`import random` imports all functions
+
+`from random import randrange` imports individual functions
+```python
+import random
+rand = random.randint(1, 10)
+``` 
+Will create a random number between 1 and 10.
+
+**Value-Returning Functions**
+A value-returning function is a function that will return a value back to the part of the program that called it.
+```python
+def sum(num1, num2):
+    result = num1 + num2
+    return result
+```
+
+A value-returning function must have a return statement that sends a value back to the part of the program that called it.
+```python
+total = sum(1, 2)
+print(total) # 3
+
+total = sum(1)
+print(total)
+```
+
+You can return mutipline value by commas separated them.
+```Python
+def roll_2_dice():
+    dice1 = random.randint(1, 6)
+    dice2 = random.randint(1, 6)
+    return dice1, dice2
+```
+In Python you can have a list of variables on the left side of the argument operator.
+```python
+dice1, dice2= roll_2_dice()
+print(dice1)
+print(dice2)
+```
 
