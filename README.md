@@ -112,10 +112,12 @@ else:
 In this chapter we learned about while loop and for loop.
 
 **While loop**
+
 - While loop required a count control. If you forget that it will result at an infinite loop.
 - While loops are best used when you don't know ahead of time how many times the loop should run.
 
 **For loop**
+
 - For loop is a count control loop. 
 - For loops are best used when you know ahead of time how many times the loop should run.
 
@@ -124,10 +126,12 @@ In this chapter we learned about while loop and for loop.
 The range function will create a list for you. For example if you write `range(3)` it mean it will create a list for you look like this: `[0, 1, 2]`
 
 **Sentinal**
+
 - A sentinel is a value that signals when there are no more items from a list of items to be processed.
 - We can also stop the loop by using `break`
 
 **Input Validation Loops**
+
 - Garbage in, Garbage out
     - ​Python can't tell the difference between good data and bad data being input. You need to write validation loops so that when you take garbage in, you throw the garbage out.
 - Numerical Input Validation
@@ -141,6 +145,7 @@ The range function will create a list for you. For example if you write `range(3
 ## Chapter 5 - Functions
 
 **Function**
+
 A <u>*function*</u> is a group of statements that exists within a program for the purpose of performing a specific task. In Java, we call them <u>*methods*</u>. Benefits of using functions include:
 
 - Code is simpler to understand
@@ -151,6 +156,7 @@ A <u>*function*</u> is a group of statements that exists within a program for th
 - Facilitates teamwork and collaboration
 
 **Defining a function**
+
 You can make your own function. The code for a function is known as a <u>*function definition*</u>.
 
  The first line of a function definition is known as the <u>header</u> or <u>signature</u>.  The function header begins with the keyword <u>def</u> and is followed by the name of the function.
@@ -164,6 +170,7 @@ You can make your own function. The code for a function is known as a <u>*functi
  ```
 
  **Calling a function**
+
  To run a function, we call it by using its name with a set of parenthesis. When a function is called by its name it is then executed.
 
 ```python
@@ -177,22 +184,27 @@ message()
 The function don't return anything call a <u>void</u> function.
 
 **Local Variables**
+
 A local variable is a variable created inside a function. It can only be accessed from inside the function. The variable does not persist elsewhere.
 
 **Scope**
+
 The scope of a local variable is the function in which that variable is created. The scope is the part of the program in which a variable may be accessed. A variable is available only to statements in the variable's scope.
 
 **Parameters**
+
 A parameter is a variable that represents required input into a function. Parameters are placed inside the parenthesis of the function header/signature.
 
 Multiple parameters must be separated by commas.
 
 **Arguments**
+
 When we call a function, we pass values, called arguments, by position to the corresponding parameter variables in a function. An argument is any piece of data that is passed into a function when the function is called.
 
 Multiple arguments must be separated by commas.
 
 **Ternary Operator**
+
 The ternary expression syntax is: *a if condition else b*. One of either a or b is evaluated and returned based on the Boolean value of condition.
 
 - If the condition evaluates to True, a is returned (and concatenated to the variable) and b is ignored
@@ -203,11 +215,13 @@ result = "a" if i == 0 else "b"
 ```
 
 **Global Variables**
+
 A <u>global variable</u> is declared outside of functions and is accessible to all the functions in a program. A <u>global</u> constant is a name that references a value that should not be changed while the program runs.
 
 It is recommended that programmers avoid using global variables in a program whenever possible.
 
 **Random Number Functions**
+
 The <u>import</u> statement causes the interpreter to load the contents of a module into memory. 
 
 `import random` imports all functions
@@ -220,6 +234,7 @@ rand = random.randint(1, 10)
 Will create a random number between 1 and 10.
 
 **Value-Returning Functions**
+
 A value-returning function is a function that will return a value back to the part of the program that called it.
 ```python
 def sum(num1, num2):
