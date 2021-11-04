@@ -6,11 +6,7 @@ MIN_GRADE_B = 80
 MIN_GRADE_C = 70
 MIN_GRADE_D = 60
 
-totalGrade = 0
-testlScore = []
-
-def calc_average(test1, test2, test3, test4, test5): #They want 5 test score as agruments
-    totalScore = test1 + test2 + test3 + test4 + test5
+def calc_average(totalScore): 
     average = totalScore / 5
     return average
 
@@ -28,9 +24,10 @@ def determine_grade(score):
     return grade
 
 def main():
-    for i in range(1,6):
-        testlScore[i] = helper.getNum(("Enter your score of test" , i , ": "), 0, 100)
-    avgScore =  calc_average(testlScore[1], testlScore[2], testlScore[3], testlScore[4], testlScore[5])
+    totalScore = 0
+    for i in range(5):
+        totalScore += helper.getNum("Enter your score of test", 0, 100)
+    avgScore =  calc_average(totalScore)
     avgGrade = determine_grade(avgScore)
     print("Your average score:", format(avgScore, ".2f"))
     print("Your final Grade is: ", avgGrade)
