@@ -1,4 +1,26 @@
 import math
+import datetime
+
+def getDate():
+    while(True):
+        try:
+            date = validateDate(getString("Enter a date [YYYY-MM-DD]:"))
+        except ValueError:
+            print("Incorrect data format, should be YYYY-MM-DD")
+        else:
+            return date
+
+
+def validateDate(date_text):
+    try:
+        date = datetime.datetime.strptime(date_text, "%Y-%m-%d")
+    except ValueError:
+        raise ValueError()
+    else:
+        return date
+
+def dateToString(date):
+    return date.strftime("%B %d, %Y")
 
 '''
 Prompts the user for a String and returns whatever was entered.
@@ -11,6 +33,51 @@ def getString(prompt):
     except AttributeError:
         userInput = input(prompt + " ")
     return userInput
+
+# Tests for getString
+# print(getString("What's your name?")) # Expected: exactly what was entered
+
+'''
+Converts a list of strings to a list of lowercase strings
+@param list - a list of strings
+@return - the list of lowercase strings
+'''
+def listToLowercase(list):
+  for i in range(len(list)):
+    list[i] = list[i].lower()
+  return list
+
+# Tests
+# print(listToLowercase(["Yes", "Y", "No", "N"])) # Expected: ["yes", "y", "no", "n"]
+
+'''
+Converts a list of strings to a string with commas separating each
+@param list - a list of strings
+@return - the list converted to a string with commas separating each
+'''
+def listToString(list):
+    result = " ["
+    count = 0
+    for item in list:
+        count += 1
+        if(count == len(list)):
+            result += "or " + str(item)
+        elif(count == len(list) - 1):
+            result += str(item) + " "
+        else:
+            result += str(item) + ", "
+    result += "]:"
+    return result
+
+# Tests
+# nums = [1, 2, 3, 4, 5]
+# print(listToString(nums))
+# pets = ["Velcro", "Zipper", "Waffles"]
+# print(listToString(pets))
+# random = ["Marc", 39, 192.5, True]
+# print(listToString(random))
+# yesOrNo = ["Yes", "No"]
+# print(listToString(yesOrNo))
 
 '''
 Validates that the user's input is included in a list of possible values
@@ -42,6 +109,13 @@ def validateUserString(prompt, possibleValues, displayPossibleValues = True, tot
     if(attempts == totalAttempts):
       return None
 
+# Tests
+# print(validateUserString("Are you a student?", ["Yes", "No"]))
+# print(validateUserString("Are you a student?", ["Yes", "No"], True, 3))
+# print(validateUserString("Are you a student?", ["Yes", "No"], True, 3, "Incorrect Y/N value."))
+# print(validateUserString("Are you a student?", ["Yes", "No"], True, float("inf"), "Incorrect Y/N value."))
+# print(validateUserString("What is your account number?", ["9999"], False, 3, "That account number was not found."))
+
 '''
 Prompts the user to enter an integer. If the value is not an integer, it prints an invalid input message and tries again.  Otherwise, it returns the integer that was entered.
 @param prompt - the prompt text for the user
@@ -59,6 +133,9 @@ def getInt(prompt):
       return userInputInt
     except ValueError:
       invalidAttempt = True
+
+# Tests
+# print(getInt("What's your age?"))
 
 '''
 Prompts the user to enter a number. If the value is not a number, it prints an invalid input message and tries again.  Otherwise, it returns the value that was entered.
@@ -80,6 +157,10 @@ def getFloat(prompt, convertToInt = False):
       return userInputNum
     except ValueError:
       invalidAttempt = True
+
+# Tests
+# print(getFloat("What's your weight?"))
+# print(getFloat("What's your weight?", True))
 
 '''
 Prompts the user to enter a whole number.  If the value is not a whole
@@ -121,37 +202,9 @@ def getNum(prompt, minValue = -float("inf"), maxValue = float("inf"), totalAttem
       if(attempts == totalAttempts):
         return None
 
-def press_enter_to_continue():
-  print("\n** Press enter to continue **")
-  input()
-  print()
-
-'''
-Converts a list of strings to a list of lowercase strings
-@param list - a list of strings
-@return - the list of lowercase strings
-'''
-def listToLowercase(list):
-  for i in range(len(list)):
-    list[i] = list[i].lower()
-  return list
-
-'''
-Converts a list of strings to a string with commas separating each
-@param list - a list of strings
-@return - the list converted to a string with commas separating each
-'''
-def listToString(list):
-    result = " ["
-    count = 0
-    for item in list:
-        count += 1
-        if(count == len(list)):
-            result += "or " + str(item)
-        elif(count == len(list) - 1):
-            result += str(item) + " "
-        else:
-            result += str(item) + ", "
-    result += "]:"
-    return result
-
+# Tests
+# print(getNum("How much do you weigh?"))
+# print(getNum("How much do you weigh?", 0))
+# print(getNum("How much do you weigh?", 0, 1000))
+# print(getNum("How much do you weigh?", 0, 1000, 3))
+# print(getNum("How much do you weigh?", 0, 1000, 3, True))
