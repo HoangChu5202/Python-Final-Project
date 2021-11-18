@@ -113,6 +113,6 @@ def main():
         if tie == True:
           gameOver = True
           drawBoard(board)
-          print("Tie!!!Congratulation both of you!!!")
+          print("It a Tie!!!Congratulation both of you!!!")
 
 main()
