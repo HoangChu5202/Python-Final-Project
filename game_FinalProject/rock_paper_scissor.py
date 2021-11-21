@@ -3,22 +3,6 @@ import random
 def ranChoice(choices):
     return random.choice(choices)
 
-def getChoice():
-    possibleChoice = ["ROCK", "PAPER", "SCISSOR", "R", "P", "S"]
-    while True:
-        playerChoice = input("What is your choice? [Rock, Paper, Scissor] or [r, p, s]: ").upper().strip()
-        if playerChoice in possibleChoice:
-            break
-        else:
-            print("Value not recognize! Please pick agian!")
-    if playerChoice.upper().strip() == "R":
-            playerChoice = "ROCK"
-    elif playerChoice.upper().strip() == "P":
-            playerChoice = "PAPER"
-    elif playerChoice.upper().strip() == "S":
-            playerChoice = "SCISSOR"   
-    return playerChoice
-
 def decideWinner(player, computer):
     if player == computer:
         winner = "Tie"
@@ -37,17 +21,14 @@ def decideWinner(player, computer):
             winner = "Computer"
     return winner
 
-def main():
+def rk_pr_sr(choice):
     choices = ["ROCK","PAPER","SCISSOR"]
     compChoice = ranChoice(choices)
-    playerChoice = getChoice().upper()
+    playerChoice = choice
     winner = decideWinner(playerChoice, compChoice)
     print("Player pick:", playerChoice)
     print("Computer pcik:", compChoice)
-    if winner == "Tie":
-        print(winner)
-    elif winner == "Player":
-        print(winner, "won")
-    else:
-        print(winner, "won")
-main()
+    
+    return winner
+
+

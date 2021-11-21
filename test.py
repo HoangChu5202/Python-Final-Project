@@ -1,60 +1,60 @@
-import pygame
- 
-pygame.init()
-screen = pygame.display.set_mode((500, 600))
-clock = pygame.time.Clock()
-font = pygame.font.SysFont("Arial", 20)
- 
- 
-class Button:
-    """Create a button, then blit the surface in the while loop"""
- 
-    def __init__(self, text,  pos, font, bg="black", feedback=""):
-        self.x, self.y = pos
-        self.font = pygame.font.SysFont("Arial", font)
-        if feedback == "":
-            self.feedback = "text"
-        else:
-            self.feedback = feedback
-        self.change_text(text, bg)
- 
-    def change_text(self, text, bg="black"):
-        """Change the text whe you click"""
-        self.text = self.font.render(text, 1, pygame.Color("White"))
-        self.size = self.text.get_size()
-        self.surface = pygame.Surface(self.size)
-        self.surface.fill(bg)
-        self.surface.blit(self.text, (0, 0))
-        self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])
- 
+import pygame, sys
+from pygame.constants import MOUSEBUTTONDOWN
+
+from pygame.image import load
+
+class Expolsion(pygame.sprite.Sprite):
+    def __init__(self, pos_x, pos_y):
+        super().__init__()
+        self.is_animating = False
+        self.hide = False
+        self.sprites = []
+        for i in range(1,31):
+            self.sprites.append(pygame.image.load("./images/explosion/explosion" + str(i) + ".png"))
+        self.current_sprite = 0
+        self.image = self.sprites[self.current_sprite]
+        self.rect = self.image.get_rect()
+        self.rect.topleft = [pos_x, pos_y]
+    def animate(self):
+        self.is_animating = True
     def show(self):
-        screen.blit(button1.surface, (self.x, self.y))
- 
-    def click(self, event):
-        x, y = pygame.mouse.get_pos()
+        return self.hide
+    def update(self):
+        if self.is_animating == True:
+            self.current_sprite += 0.25
+            if self.current_sprite >= len(self.sprites):
+                self.current_sprite = 0
+                self.is_animating = False
+                self.hide = False
+            self.image = self.sprites[int(self.current_sprite)]
+    def if_win(self):
+        self.hide = True
+#General setup
+pygame.init()
+clock = pygame.time.Clock()
+
+#Game screen
+width = 400
+height = 400
+screen = pygame.display.set_mode((width, height))
+
+moving_sprites = pygame.sprite.Group()
+explosin = Expolsion(100, 100)
+moving_sprites.add(explosin)
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pressed()[0]:
-                if self.rect.collidepoint(x, y):
-                    self.change_text(self.feedback, bg="red")
- 
- 
-def mainloop():
-    """ The infinite loop where things happen """
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-            button1.click(event)
-        button1.show()
-        clock.tick(30)
-        pygame.display.update()
- 
- 
-button1 = Button(
-    "Click here",
-    (100, 100),
-    font=30,
-    bg="navy",
-    feedback="You clicked me")
- 
-mainloop()
+                explosin.if_win()
+                explosin.animate()
+
+    screen.fill((0, 0, 0))
+    if explosin.show() == True:
+        moving_sprites.draw(screen)
+        moving_sprites.update()
+    pygame.display.flip()
+    clock.tick(60)
