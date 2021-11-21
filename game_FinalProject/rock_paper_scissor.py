@@ -28,7 +28,6 @@ def rk_pr_sr(choice):
     winner = decideWinner(playerChoice, compChoice)
     print("Player pick:", playerChoice)
     print("Computer pcik:", compChoice)
-    
     return winner
 
 

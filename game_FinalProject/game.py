@@ -70,7 +70,7 @@ class Expolsion(pygame.sprite.Sprite):
         self.is_showing = False
         self.sprites = []
         for i in range(1,31):
-            self.sprites.append(pygame.image.load("./images/explosion/explosion" + str(i) + ".png")) #Append 30 explosion image to the self.sprites
+            self.sprites.append(pygame.image.load("images/explosion/explosion" + str(i) + ".png")) #Append 30 explosion image to the self.sprites
         self.current_sprite = 0     #Set self.current_sprite to index 0 so it will start at the first image
         self.image = self.sprites[self.current_sprite]  #Set self.image to the current sprite
         self.rect = self.image.get_rect()   #Create a rectangel then assign the image to that rectangle
@@ -120,15 +120,13 @@ def who_win(winner, boss_cur_hp, boss, mc_cur_hp, mc):
     if winner == "Player":
         boss_cur_hp = minus_hp(boss_cur_hp, mc_atk)
         boss_health = health_bar( boss_cur_hp, boss_max_hp)
-        print("Boss: " + str(boss_cur_hp))
-        print(boss_health)
+        print("You win")
         print()
         return boss_cur_hp, boss_health
     else:
         mc_cur_hp = minus_hp(mc_cur_hp, boss_atk)
         mc_health = health_bar( mc_cur_hp, mc_max_hp)
-        print("MC: " + str(mc_cur_hp))
-        print(mc_health)
+        print("You lose")
         print()
         return mc_cur_hp, mc_health
 
@@ -156,25 +154,25 @@ def gameEXE(boss, mc):
     #GENARAL SET UP
     #########################################################################
     #Background
-    background = get_image("./images/background.jpg", (1000,600))
-    battle_bacground = get_image("./images/DemonCastle.png", (1000,760))
+    background = get_image("images/background.jpg", (1000,600))
+    battle_bacground = get_image("images/DemonCastle.png", (1000,760))
     #Win and lose image
-    win_background = get_image("./images/win.jpg", (1000,600))
-    lose_background = get_image("./images/lose.jpg", (1000,600))
+    win_background = get_image("images/win.jpg", (1000,600))
+    lose_background = get_image("images/lose.jpg", (1000,600))
     win_hide = True
     lose_hide = True
     #main character image
-    mc_image = get_image("./images/player.png", (210,200))
+    mc_image = get_image("images/player.png", (210,200))
     #Boss image
-    boss_img = get_image("./images/boss.png", (350,200))
+    boss_img = get_image("images/boss.png", (350,200))
     #Vs icon
-    vs_icon = get_image("./images/vs_icon2.png", (100, 100))
+    vs_icon = get_image("images/vs_icon2.png", (100, 100))
     #Picl bar
-    pick_bar = get_image("./images/pick_bar.png", (700, 160))
+    pick_bar = get_image("images/pick_bar.png", (700, 160))
     #Rock-Paper-Scissor image
-    rock_img = get_image("./images/rock.png", (70,70))
-    paper_img = get_image("./images/paper.png", (70,70))
-    scissor_img = get_image("./images/scissors.png", (70,70))
+    rock_img = get_image("images/rock.png", (70,70))
+    paper_img = get_image("images/paper.png", (70,70))
+    scissor_img = get_image("images/scissors.png", (70,70))
     #Character Hp
     boss_cur_hp = boss[0]   #Boss Current Hp; boss[0] is the boss hp
     boss_max_hp = boss[0]   #Boss Max Hp
@@ -195,8 +193,11 @@ def gameEXE(boss, mc):
     moving_sprites.add(explosin2)
     running = True
     result = ""
+
+    data.print_history()
     ########################################################################## 
     while running:
+        
         # All this code below is get input on screen and do what ever you want
         for event in pygame.event.get(): 
             #click on the button on screen to triger the event
@@ -212,7 +213,6 @@ def gameEXE(boss, mc):
                         explosin1.animate()
                         loser = endGame(boss_cur_hp, mc_cur_hp)
                         if loser == "Boss":
-                            print("You win")
                             win_hide = False
                     elif winner == "Computer":
                         mc_cur_hp, mc_health = who_win(winner, boss_cur_hp, boss, mc_cur_hp, mc)
@@ -220,8 +220,10 @@ def gameEXE(boss, mc):
                         explosin2.animate()
                         loser = endGame(boss_cur_hp, mc_cur_hp)
                         if loser == "Player":
-                            print("You lose")
                             lose_hide = False
+                    else:
+                        print("Tie")
+                        print()
                 #***********************************************************************************
                                         #PAPER BUTTON
                 if paper_button.click(event) == "PAPER":
@@ -232,7 +234,6 @@ def gameEXE(boss, mc):
                         explosin1.animate()
                         loser = endGame(boss_cur_hp, mc_cur_hp)
                         if loser == "Boss":
-                            print("You win")
                             win_hide = False
                     elif winner == "Computer":
                         mc_cur_hp, mc_health = who_win(winner, boss_cur_hp, boss, mc_cur_hp, mc)
@@ -240,8 +241,10 @@ def gameEXE(boss, mc):
                         explosin2.animate()
                         loser = endGame(boss_cur_hp, mc_cur_hp)
                         if loser == "Player":
-                            print("You lose")
                             lose_hide = False
+                    else:
+                        print("Tie")
+                        print()
                 #***********************************************************************************
                                         #SCISSOR BUTTON
                 if scissor_button.click(event) == "SCISSOR":
@@ -252,7 +255,6 @@ def gameEXE(boss, mc):
                         explosin1.animate()
                         loser = endGame(boss_cur_hp, mc_cur_hp)
                         if loser == "Boss":
-                            print("You win")
                             win_hide = False
                     elif winner == "Computer":
                         mc_cur_hp, mc_health = who_win(winner, boss_cur_hp, boss, mc_cur_hp, mc)
@@ -260,18 +262,17 @@ def gameEXE(boss, mc):
                         explosin2.animate()
                         loser = endGame(boss_cur_hp, mc_cur_hp)
                         if loser == "Player":
-                            print("You lose")
                             lose_hide = False
+                    else:
+                        print("Tie")
+                        print()
             ########################################################################################
-           
             # This code alow you to close the window when click on top right X button
             if event.type == pygame.QUIT:
                 running = False
                 return result
                 
                 
-
-
         #fill screen with background
         screen.blit(background, (0, 0))
         screen.blit(battle_bacground, (0, 0))        
